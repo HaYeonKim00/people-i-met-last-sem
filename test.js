@@ -1,4 +1,4 @@
-et value = [3, 6, 6, 4, 1, 2, 2, 5, 1, 1, 1, 2, 2, 1, 10, 1, 3, 1, 3, 3, 2, 2];
+let value = [3, 6, 6, 4, 1, 2, 2, 5, 1, 1, 1, 2, 2, 1, 10, 1, 3, 1, 3, 3, 2, 2];
 let nameVal = ['SaaS', 'ML', 'QC', 'Grace', 'Brian', 'Ellen', 'Yewon', 'MinJoo', 'Emily', 'Chris', 'Dean', 'date_1','date_2','date_3','AH','Caroline', 'Yein&MJ', 'JooWon', 'Yejin', 'Inyoung', 'Ji Hoon', 'SH&MS'];
 
 // Variable to store the index of the hovered legend item

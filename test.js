@@ -3,76 +3,112 @@ let nameVal = ['SaaS', 'ML', 'QC', 'Grace', 'Brian', 'Ellen', 'Yewon', 'MinJoo',
 
 // Variable to store the index of the hovered legend item
 let legendItems = [
-	{ label: 'Zoom', chartIndex: [0, 7], text: 'You met 1 person out of 40 total meetings.'},
-	{ label: 'Columbia', chartIndex: [1, 2, 3, 4]},
-	{ label: 'Known for more than 5 years', chartIndex: [3, 4, 5] },
-	// Add more legend items as needed
-  ];
-  
+	{ label: 'Zoom', chartIndex: [0], text: 'You met 1 person out of 40 total meetings.'},
+	{ label: 'Columbia', chartIndex: [0, 1, 2, 3, 5, 6, 7, 10, 14, 15, 16, 20], text: 'You met 12 people out of 40 total meetings.'},
+	{ label: 'Known for more than 5 years', chartIndex: [4, 8, 9, 21] , text: 'You met 4 people out of 40 total meetings.'},
+	{ label: 'Talked about personal stuff', chartIndex: [3, 4, 7, 8, 9, 11, 12, 13, 15, 18, 19] , text: 'You met 11 people out of 40 total meetings.'},	
+	{ label: 'drank at least once', chartIndex: [2, 3, 7, 11, 12, 13, 16, 18, 19] , text: 'You met 9 people out of 40 total meetings.'}// Add more legend items as needed
+];
   // Variable to store the index of the hovered legend item
   let hoveredLegendIndex = -1;
   
   function setup() {
 	createCanvas(windowWidth, windowHeight);
-	noScroll(); // Prevent scrolling
-
+	background('black'); // Set the background color to black
+	noScroll();
+  
+	// Set font for all text
+	textFont('Tahoma');
+  
 	// Add event listeners to legend items
 	for (let i = 0; i < legendItems.length; i++) {
 	  let legendItem = createP(legendItems[i].label);
-	  legendItem.position(20, 20 + i * 20);
+	  legendItem.position(40, 20 + i * 30);
+	  legendItem.style('color', 'white');
+	  legendItem.style('font-size', '20px');
+	  legendItem.style('font-family', 'Tahoma');
 	  legendItem.style('cursor', 'pointer');
 	  legendItem.mouseOver(() => {
-		hoveredLegendIndex = i;	
+		hoveredLegendIndex = i;
+		if (i == 0) {
+		  legendItem.style('color', 'purple');
+		} else if (i == 1) {
+		  legendItem.style('color', 'blue');
+		} else if (i == 2) {
+			legendItem.style('color', 'green');
+		} else if (i == 3) {
+			legendItem.style('color', 'orange');
+		} else {
+		  legendItem.style('color', 'yellow');
+		}
 	  });
 	  legendItem.mouseOut(() => {
 		hoveredLegendIndex = -1;
+		legendItem.style('color', 'white');
 	  });
 	}
   }
   
   function draw() {
-	background(200);
+	background('black');
 	let barWidth = 30; // Width of each bar
 	let barPadding = 20; // Padding between bars
 	let maxValue = max(value); // Determine the highest value
+  
+	// Calculate total width of bars and padding
+	let totalWidth = value.length * (barWidth + barPadding);
+	let startX = (width - totalWidth) / 2; // Calculate starting x position for bars
   
 	// Draw bars and names
 	for (let i = 0; i < value.length; i++) {
 	  // Draw bar
 	  let barHeight = map(value[i], 0, maxValue, 0, height - 400);
 	  if (hoveredLegendIndex !== -1 && legendItems[hoveredLegendIndex].chartIndex.includes(i)) {
-		fill(255, 0, 0);
+		if (hoveredLegendIndex == 0) {
+		  fill('purple');
+		} else if (hoveredLegendIndex == 1) {
+		  fill('blue');
+		} else if (hoveredLegendIndex == 2) {
+			fill('green');
+		} else if (hoveredLegendIndex == 3) {
+			fill('orange');
+		} else {
+		  fill('yellow');
+		}
 	  } else {
-		fill(0);
+		fill('white');
 	  }
-	  rect(i * (barWidth + barPadding) + 60, height - barHeight - 100, barWidth, barHeight);
-
+	  rect(startX + i * (barWidth + barPadding), height - barHeight - 100, barWidth, barHeight);
+  
 	  // Draw name
 	  textAlign(CENTER, TOP);
-	  text(nameVal[i], i * (barWidth + barPadding) + 60 + barWidth / 2, height - 80);
+	  fill('white');
+	  text(nameVal[i], startX + i * (barWidth + barPadding) + barWidth / 2, height - 80);
 	}
   
 	// Draw y-axis labels
 	for (let k = 0; k <= maxValue; k += 2) {
 	  let y = map(k, 0, maxValue, height - 100, 300);
 	  textAlign(RIGHT, CENTER);
-	  text(k, 50, y);
+	  fill('white');
+	  text(k, startX - 10, y);
 	}
-
+  
 	textAlign(TOP, CENTER);
 	if (hoveredLegendIndex !== -1) {
-		fill('yellow');
-		textSize(22);
-		text(legendItems[hoveredLegendIndex].text, width/2, height/4);
-		textSize(12);
+	  fill('white');
+	  textFont('Tahoma');
+	  textSize(22);
+	  text(legendItems[hoveredLegendIndex].text, width / 1.5, height / 4);
+	  textSize(12);
 	} else {
-		textSize(12); // Reset text size to default
-		fill(0); // Reset text color to default
+	  textSize(12); // Reset text size to default
+	  fill(0); // Reset text color to default
 	}
   }
-  
   
   // Prevent scrolling
   function noScroll() {
 	document.body.style.overflow = 'hidden';
   }
+  

@@ -3,11 +3,11 @@ let nameVal = ['SaaS', 'ML', 'QC', 'Grace', 'Brian', 'Ellen', 'Yewon', 'MinJoo',
 
 // Variable to store the index of the hovered legend item
 let legendItems = [
-	{ label: 'Zoom', chartIndex: [0], text: 'You met 1 person out of 40 total meetings.'},
-	{ label: 'Columbia', chartIndex: [0, 1, 2, 3, 5, 6, 7, 10, 14, 15, 16, 20], text: 'You met 12 people out of 40 total meetings.'},
-	{ label: 'Known for more than 5 years', chartIndex: [4, 8, 9, 21] , text: 'You met 4 people out of 40 total meetings.'},
-	{ label: 'Talked about personal stuff', chartIndex: [3, 4, 7, 8, 9, 11, 12, 13, 15, 18, 19] , text: 'You met 11 people out of 40 total meetings.'},	
-	{ label: 'drank at least once', chartIndex: [2, 3, 7, 11, 12, 13, 16, 18, 19] , text: 'You met 9 people out of 40 total meetings.'}// Add more legend items as needed
+	{ label: 'Zoom', chartIndex: [0], text: '3 meetings out of 60 meetings were held on Zoom'},
+	{ label: 'Columbia', chartIndex: [0, 1, 2, 3, 5, 6, 7, 10, 14, 15, 16, 20], text: '43 meetings out of 60 meetings were with Columbia affiliates'},
+	{ label: 'Known for more than 5 years', chartIndex: [4, 8, 9, 21] , text: '5 meetings out of 60 meetings were with individuals whom I have known for more than 5 years'},
+	{ label: 'Talked about personal stuff', chartIndex: [3, 4, 7, 8, 9, 11, 12, 13, 15, 18, 19] , text: '35 meetings out of 60 meetings involved personal issues as a topic'},	
+	{ label: 'drank at least once', chartIndex: [2, 3, 7, 11, 12, 13, 16, 18, 19] , text: '29 meetings out of 60 meetings involved the consumption of beverages'}// Add more legend items as needed
 ];
   // Variable to store the index of the hovered legend item
   let hoveredLegendIndex = -1;
@@ -99,7 +99,7 @@ let legendItems = [
 	  fill('white');
 	  textFont('Tahoma');
 	  textSize(22);
-	  text(legendItems[hoveredLegendIndex].text, width / 1.5, height / 4);
+	  text(legendItems[hoveredLegendIndex].text, 1200, height / 4);
 	  textSize(12);
 	} else {
 	  textSize(12); // Reset text size to default

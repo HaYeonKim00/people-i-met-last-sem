@@ -9,3 +9,6 @@ In the top left corner of the visualization, there is a legend that categorizes 
 
 ### Technologies Used
 p5.js: A JavaScript library for creative coding and visualization, used to create the interactive bar chart.
+
+### Progress Google Slides
+[Slides](https://docs.google.com/presentation/d/11gZgYsyZIV3v12QNDU4VeJT09Cn2CnUYQrRMYc_C05Q/edit?usp=sharing)
